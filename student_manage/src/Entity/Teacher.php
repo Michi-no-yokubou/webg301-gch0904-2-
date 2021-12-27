@@ -15,7 +15,7 @@ class Teacher
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $avatar;
 
     #[ORM\Column(type: 'string', length: 255)]

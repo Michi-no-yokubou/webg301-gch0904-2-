@@ -5,14 +5,24 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-class StudentController extends AbstractController
+use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
+class CourseController extends AbstractController
 {
-    #[Route('/student', name: 'student')]
-    public function index(): Response
+    private $em;
+    public function __construct(PersistenceManagerRegistry $registry)
     {
-        return $this->render('student/index.html.twig', [
-            'controller_name' => 'StudentController',
-        ]);
+        $this->em = $registry;
     }
+
+    /**
+     * @Route("/students", name="student_index")
+     */
+
+    public function showStudentIndex(){
+        $students = $this->em->getRepository(Student::class)->findAll();
+        return $this->render("student/index.html.twig",
+        [
+            'students' => $students
+        ]);
+}
 }

@@ -13,8 +13,8 @@ class EventFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
         $event = new Event;
-        $event->setDescription("SGEEEEESSSSSSSSSSS");
-        $event->setDuration("13 Days");
+        $event->setDescription("End Of The World");
+        $event->setDuration("2 Days");
         $manager->persist($event);
         $manager->flush();
     }

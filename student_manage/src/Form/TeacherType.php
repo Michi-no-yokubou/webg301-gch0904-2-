@@ -17,7 +17,7 @@ class TeacherType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class,
+            ->add('code', TextType::class,
             [
                 'label' => 'Teacher code',
                 'required' => true,
@@ -26,15 +26,18 @@ class TeacherType extends AbstractType
                     'minlength' => 3
                 ]
             ])
-            ->add('birthday', DateType::class,
+            ->add('name', DateType::class,
             [
-                'label' => 'Author birthday',
+                'label' => 'Teacher name',
                 'required' => true,
-                'widget' => 'single_text'
+                'attr' =>
+                [
+                    'minlength' => 3
+                ]
             ])
-            ->add('address', TextType::class,
+            ->add('age', TextType::class,
             [
-                'label' => 'Author address',
+                'label' => 'Teacher age',
                 'required' => true,
                 'attr' => [
                     'minlength' => 5
@@ -42,7 +45,7 @@ class TeacherType extends AbstractType
             ])
             ->add('gender', ChoiceType::class,
             [
-                'label' => 'Author gender',
+                'label' => 'Teacher gender',
                 'required' => true,
                 'choices' => [
                     'Male' => 'Male',
@@ -63,7 +66,7 @@ class TeacherType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Author::class,
+            'data_class' => Teacher::class,
         ]);
     }
 }

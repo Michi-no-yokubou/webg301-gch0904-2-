@@ -6,6 +6,14 @@
    <div class="col md-6"></div>
       {{ form_start (teacherForm) }}
          <div class="form-group">
+            {{ form_label (teacherForm.code)}}
+            {{ form_widget (teacherForm.code ,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+                  <div class="form-group">
             {{ form_label (teacherForm.name)}}
             {{ form_widget (teacherForm.name ,
                {
@@ -14,8 +22,8 @@
             }}
          </div>
          <div class="form-group">
-            {{ form_label (teacherForm.birthday)}}
-            {{ form_widget (teacherForm.birthday ,
+            {{ form_label (teacherForm.age)}}
+            {{ form_widget (teacherForm.age ,
                {
                   'attr' : {'class' : 'form-control'}
                })

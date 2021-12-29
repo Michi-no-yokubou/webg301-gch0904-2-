@@ -28,7 +28,7 @@ class TeacherType extends AbstractType
             ])
             ->add('name', DateType::class,
             [
-                'label' => 'Teacher name',
+                'label' => 'Teacher age',
                 'required' => true,
                 'attr' =>
                 [
@@ -37,7 +37,7 @@ class TeacherType extends AbstractType
             ])
             ->add('age', TextType::class,
             [
-                'label' => 'Teacher age',
+                'label' => 'Teacher name',
                 'required' => true,
                 'attr' => [
                     'minlength' => 5

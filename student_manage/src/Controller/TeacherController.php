@@ -15,7 +15,26 @@ class TeacherController extends AbstractController
     {
         $this->em = $registry;
     }
+    #[Route('/teacher/add', name : 'teacher_add')]
+    public function teacherAdd (Request $request) {
+        $teacher = new teacher();
+        $form = $this->createForm(teacherType::class,$teacher);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->em->getManager();
+            $manager->persist($teacher);
+            $manager->flush();
+
+            $this->addFlash("Success", "Add teacher succeed");
+            return $this->redirectToRoute("teacher_index");
+        }
+
+        return $this->renderForm("teacher/add.html.twig",
+        [
+            'teacherForm' => $form
+        ]);
+    }
     #[Route('/teacher', name: 'teacher')]
     public function teacherIndex(): Response
     {

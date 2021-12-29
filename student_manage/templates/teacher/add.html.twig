@@ -30,14 +30,6 @@
             }}
          </div>
          <div class="form-group">
-            {{ form_label (teacherForm.address)}}
-            {{ form_widget (teacherForm.address ,
-               {
-                  'attr' : {'class' : 'form-control'}
-               })
-            }}
-         </div>
-         <div class="form-group">
             {{ form_label (teacherForm.gender)}}
             {{ form_widget (teacherForm.gender ,
                {
@@ -45,6 +37,7 @@
                })
             }}
          </div>
+
          <div class="form-group text-center mt-3">
             <input class="btn btn-primary" type="submit" value="Add" />
          </div>

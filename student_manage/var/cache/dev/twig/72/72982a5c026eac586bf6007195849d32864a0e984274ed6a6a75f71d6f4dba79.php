@@ -91,68 +91,42 @@ class __TwigTemplate_eb849ebad09e76085bf5b9bac6ffc6369493bdd3961139ac9d017309788
                 <tr>
                     <td> ";
         // line 22
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["teacher"]) || array_key_exists("teacher", $context) ? $context["teacher"] : (function () { throw new RuntimeError('Variable "teacher" does not exist.', 22, $this->source); })()), "code", [], "any", false, false, false, 22), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["teachers"]) || array_key_exists("teachers", $context) ? $context["teachers"] : (function () { throw new RuntimeError('Variable "teachers" does not exist.', 22, $this->source); })()), "code", [], "any", false, false, false, 22), "html", null, true);
         echo " </td>
                     <td> ";
         // line 23
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["teacher"]) || array_key_exists("teacher", $context) ? $context["teacher"] : (function () { throw new RuntimeError('Variable "teacher" does not exist.', 23, $this->source); })()), "name", [], "any", false, false, false, 23), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["teachers"]) || array_key_exists("teachers", $context) ? $context["teachers"] : (function () { throw new RuntimeError('Variable "teachers" does not exist.', 23, $this->source); })()), "name", [], "any", false, false, false, 23), "html", null, true);
         echo " </td>
                     <td> ";
         // line 24
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["teacher"]) || array_key_exists("teacher", $context) ? $context["teacher"] : (function () { throw new RuntimeError('Variable "teacher" does not exist.', 24, $this->source); })()), "age", [], "any", false, false, false, 24), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["teachers"]) || array_key_exists("teachers", $context) ? $context["teachers"] : (function () { throw new RuntimeError('Variable "teachers" does not exist.', 24, $this->source); })()), "age", [], "any", false, false, false, 24), "html", null, true);
         echo " </td>
                     <td> ";
         // line 25
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["teacher"]) || array_key_exists("teacher", $context) ? $context["teacher"] : (function () { throw new RuntimeError('Variable "teacher" does not exist.', 25, $this->source); })()), "gender", [], "any", false, false, false, 25), "html", null, true);
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["teachers"]) || array_key_exists("teachers", $context) ? $context["teachers"] : (function () { throw new RuntimeError('Variable "teachers" does not exist.', 25, $this->source); })()), "gender", [], "any", false, false, false, 25), "html", null, true);
         echo " </td>
                     <td> 
-                        ";
-        // line 27
-        if ((twig_get_attribute($this->env, $this->source, (isset($context["author"]) || array_key_exists("author", $context) ? $context["author"] : (function () { throw new RuntimeError('Variable "author" does not exist.', 27, $this->source); })()), "books", [], "any", false, false, false, 27) != null)) {
-            // line 28
-            echo "                            ";
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["author"]) || array_key_exists("author", $context) ? $context["author"] : (function () { throw new RuntimeError('Variable "author" does not exist.', 28, $this->source); })()), "books", [], "any", false, false, false, 28));
-            foreach ($context['_seq'] as $context["_key"] => $context["book"]) {
-                // line 29
-                echo "                                <a class=\"text-decoration-none\" href=\"";
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("teacher_detail", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["teacher"]) || array_key_exists("teacher", $context) ? $context["teacher"] : (function () { throw new RuntimeError('Variable "teacher" does not exist.', 29, $this->source); })()), "id", [], "any", false, false, false, 29)]), "html", null, true);
-                echo "\">
-                                ";
-                // line 30
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["book"], "title", [], "any", false, false, false, 30), "html", null, true);
-                echo "
-                                </a>
-                            <br>
-                        ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['book'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 34
-            echo "                        ";
-        }
-        echo "         
+                              
                     </td>
                     <td>
                         <a href = \"";
-        // line 37
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("teacher_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["teacher"]) || array_key_exists("teacher", $context) ? $context["teacher"] : (function () { throw new RuntimeError('Variable "teacher" does not exist.', 37, $this->source); })()), "id", [], "any", false, false, false, 37)]), "html", null, true);
+        // line 30
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("teacher_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["teachers"]) || array_key_exists("teachers", $context) ? $context["teachers"] : (function () { throw new RuntimeError('Variable "teachers" does not exist.', 30, $this->source); })()), "id", [], "any", false, false, false, 30)]), "html", null, true);
         echo "\">
                             <img src = \"";
-        // line 38
+        // line 31
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/edit.png"), "html", null, true);
         echo "\" width=\"50\" height=\"50\" >
                         </a>
                     </td>
                     <td>
                         <a href=\"";
-        // line 42
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("teacher_delete", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["teacher"]) || array_key_exists("teacher", $context) ? $context["teacher"] : (function () { throw new RuntimeError('Variable "teacher" does not exist.', 42, $this->source); })()), "id", [], "any", false, false, false, 42)]), "html", null, true);
+        // line 35
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("teacher_delete", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["teachers"]) || array_key_exists("teachers", $context) ? $context["teachers"] : (function () { throw new RuntimeError('Variable "teachers" does not exist.', 35, $this->source); })()), "id", [], "any", false, false, false, 35)]), "html", null, true);
         echo "\"
                         onclick = \"return confirm('Do you want to delete this teacher ?')\">
                             <img src = \"";
-        // line 44
+        // line 37
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/delete.png"), "html", null, true);
         echo "\" width=\"50\" height=\"50\" >
                         </a>
@@ -182,7 +156,7 @@ class __TwigTemplate_eb849ebad09e76085bf5b9bac6ffc6369493bdd3961139ac9d017309788
 
     public function getDebugInfo()
     {
-        return array (  156 => 44,  151 => 42,  144 => 38,  140 => 37,  133 => 34,  123 => 30,  118 => 29,  113 => 28,  111 => 27,  106 => 25,  102 => 24,  98 => 23,  94 => 22,  75 => 6,  71 => 5,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  130 => 37,  125 => 35,  118 => 31,  114 => 30,  106 => 25,  102 => 24,  98 => 23,  94 => 22,  75 => 6,  71 => 5,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -208,27 +182,20 @@ class __TwigTemplate_eb849ebad09e76085bf5b9bac6ffc6369493bdd3961139ac9d017309788
         </thead>
         <tbody>
                 <tr>
-                    <td> {{ teacher.code }} </td>
-                    <td> {{ teacher.name }} </td>
-                    <td> {{ teacher.age }} </td>
-                    <td> {{ teacher.gender }} </td>
+                    <td> {{ teachers.code }} </td>
+                    <td> {{ teachers.name }} </td>
+                    <td> {{ teachers.age }} </td>
+                    <td> {{ teachers.gender }} </td>
                     <td> 
-                        {% if author.books != null %}
-                            {% for book in author.books %}
-                                <a class=\"text-decoration-none\" href=\"{{ path('teacher_detail', {'id' : teacher.id }) }}\">
-                                {{ book.title }}
-                                </a>
-                            <br>
-                        {% endfor %}
-                        {% endif %}         
+                              
                     </td>
                     <td>
-                        <a href = \"{{ path('teacher_edit', {'id' : teacher.id }) }}\">
+                        <a href = \"{{ path('teacher_edit', {'id' : teachers.id }) }}\">
                             <img src = \"{{ asset('images/edit.png') }}\" width=\"50\" height=\"50\" >
                         </a>
                     </td>
                     <td>
-                        <a href=\"{{ path('teacher_delete', {'id' : teacher.id }) }}\"
+                        <a href=\"{{ path('teacher_delete', {'id' : teachers.id }) }}\"
                         onclick = \"return confirm('Do you want to delete this teacher ?')\">
                             <img src = \"{{ asset('images/delete.png') }}\" width=\"50\" height=\"50\" >
                         </a>

@@ -23,6 +23,7 @@ return [
     'student_detail' => [['id'], ['_controller' => 'App\\Controller\\StudentController::studentDetail'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/student/detail']], [], [], []],
     'student_edit' => [['id'], ['_controller' => 'App\\Controller\\StudentController::studentEdit'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/student/edit']], [], [], []],
     'student_delete' => [['id'], ['_controller' => 'App\\Controller\\StudentController::studentDelete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/student/delete']], [], [], []],
+    'teacher_add' => [[], ['_controller' => 'App\\Controller\\TeacherController::teacherAdd'], [], [['text', '/teacher/add']], [], [], []],
     'teacher' => [[], ['_controller' => 'App\\Controller\\TeacherController::teacherIndex'], [], [['text', '/teacher']], [], [], []],
     'teacher_detail' => [['id'], ['_controller' => 'App\\Controller\\TeacherController::teacherDetail'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/teacher/detail']], [], [], []],
     'teacher_edit' => [['id'], ['_controller' => 'App\\Controller\\TeacherController::teacherEdit'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/teacher/edit']], [], [], []],

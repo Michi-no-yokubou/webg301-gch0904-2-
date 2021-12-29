@@ -18,6 +18,7 @@ return [
         '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
         '/student/class' => [[['_route' => 'student_class', '_controller' => 'App\\Controller\\StudentClassController::index'], null, null, null, false, false, null]],
         '/student' => [[['_route' => 'student', '_controller' => 'App\\Controller\\StudentController::index'], null, null, null, false, false, null]],
+        '/teacher/add' => [[['_route' => 'teacher_add', '_controller' => 'App\\Controller\\TeacherController::teacherAdd'], null, null, null, false, false, null]],
         '/teacher' => [[['_route' => 'teacher', '_controller' => 'App\\Controller\\TeacherController::teacherIndex'], null, null, null, false, false, null]],
         '/tuition' => [[['_route' => 'tuition', '_controller' => 'App\\Controller\\TuitionController::index'], null, null, null, false, false, null]],
     ],

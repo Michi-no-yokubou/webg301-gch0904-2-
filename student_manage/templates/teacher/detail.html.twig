@@ -8,7 +8,7 @@
     <table class="table table-responsive-md mt-3">
         <thead>
             <tr>
-                <th>Teacher Avatar</th>
+                
                 <th>Teacher Code</th>
                 <th>Teacher Name</th>
                 <th>Teacher Age</th>
@@ -19,19 +19,12 @@
         </thead>
         <tbody>
                 <tr>
+                    <td> {{ teacher.code }} </td>
                     <td> {{ teacher.name }} </td>
-                    <td> {{ teacher.birthday | date('d/m/Y') }} </td>
-                    <td> {{ teacher.address }} </td>
+                    <td> {{ teacher.age }} </td>
                     <td> {{ teacher.gender }} </td>
                     <td> 
-                        {% if author.books != null %}
-                            {% for book in author.books %}
-                                <a class="text-decoration-none" href="{{ path('teacher_detail', {'id' : teacher.id }) }}">
-                                {{ book.title }}
-                                </a>
-                            <br>
-                        {% endfor %}
-                        {% endif %}         
+                              
                     </td>
                     <td>
                         <a href = "{{ path('teacher_edit', {'id' : teacher.id }) }}">

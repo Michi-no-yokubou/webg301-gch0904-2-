@@ -13,10 +13,9 @@ class TuitionFeeFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
         $tuitionfee = new TuitionFee;
-        $tuitionfee->setAmount(1000,00);
-        $tuitionfee->setDuration(12);
+        $tuitionfee->setAmount(100.00);
+        $tuitionfee->setDuration("10 days");
         $manager->persist($tuitionfee);
-
         $manager->flush();
     }
 }

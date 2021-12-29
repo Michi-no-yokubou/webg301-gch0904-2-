@@ -13,9 +13,8 @@ class CourseFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
         $course = new Course;
-        $course->setDescription(" This class is for F2G");
-        $course->setDuration(12);
-        
+        $course->setDescription("WEB201");
+        $course->setDuration("1 Day");
         $manager->persist($course);
         $manager->flush();
     }

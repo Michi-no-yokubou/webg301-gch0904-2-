@@ -13,23 +13,23 @@ class Student
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'string', length: 255 , nullable:true)]
     private $avatar;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 10)]
     private $code;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 30)]
     private $name;
 
     #[ORM\Column(type: 'integer')]
     private $age;
 
-    #[ORM\ManyToOne(targetEntity: StudentClass::class, inversedBy: 'students')]
-    private $studentClass;
-
     #[ORM\Column(type: 'string', length: 255)]
     private $gender;
+
+    #[ORM\ManyToOne(targetEntity: StudentClass::class, inversedBy: 'students')]
+    private $studentClass;
 
     public function getId(): ?int
     {
@@ -41,7 +41,7 @@ class Student
         return $this->avatar;
     }
 
-    public function setAvatar(?string $avatar): self
+    public function setAvatar(string $avatar): self
     {
         $this->avatar = $avatar;
 
@@ -77,21 +77,9 @@ class Student
         return $this->age;
     }
 
-    public function setAge(?int $age): self
+    public function setAge(int $age): self
     {
         $this->age = $age;
-
-        return $this;
-    }
-
-    public function getStudentClass(): ?StudentClass
-    {
-        return $this->studentClass;
-    }
-
-    public function setStudentClass(?StudentClass $studentClass): self
-    {
-        $this->studentClass = $studentClass;
 
         return $this;
     }
@@ -104,6 +92,18 @@ class Student
     public function setGender(string $gender): self
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getStudentClass(): ?StudentClass
+    {
+        return $this->studentClass;
+    }
+
+    public function setStudentClass(?StudentClass $studentClass): self
+    {
+        $this->studentClass = $studentClass;
 
         return $this;
     }

@@ -12,9 +12,9 @@ class StudentFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
-
         for ($i=1; $i<=10; $i++){
             $student = new Student;
+            $student->setAvatar("images.png");
             $student->setCode("GCH000$i");
             $student->setName("Student $i");
             $student->setAge("12");

@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container col-md-6 mt-3 mb-3">
+   <h2 class="text-center">Add New Student</h2>
+   <div class="col md-6"></div>
+      {{ form_start (studentForm) }}
+         <div class="form-group">
+            {{ form_label (studentForm.code)}}
+            {{ form_widget (studentForm.code ,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+                  <div class="form-group">
+            {{ form_label (studentForm.name)}}
+            {{ form_widget (studentForm.name ,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+         <div class="form-group">
+            {{ form_label (studentForm.age)}}
+            {{ form_widget (studentForm.age ,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+         <div class="form-group">
+            {{ form_label (studentForm.gender)}}
+            {{ form_widget (studentForm.gender ,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>
+
+         <div class="form-group text-center mt-3">
+            <input class="btn btn-primary" type="submit" value="Add" />
+         </div>
+      {{ form_end (studentForm)}}
+   </div>
+</div>
+{% endblock %}

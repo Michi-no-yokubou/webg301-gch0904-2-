@@ -3,9 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TeacherRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\PseudoTypes\False_;
 
 #[ORM\Entity(repositoryClass: TeacherRepository::class)]
 class Teacher
@@ -15,28 +14,23 @@ class Teacher
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(type: 'string', length: 255 , nullable:true)]
     private $avatar;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 10)]
     private $code;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 30)]
     private $name;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string', length: 255)]
     private $age;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $gender;
 
-    #[ORM\ManyToMany(targetEntity: StudentClass::class, inversedBy: 'teachers')]
-    private $studentclasses;
-
-    public function __construct()
-    {
-        $this->studentclasses = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(targetEntity: StudentClass::class, inversedBy: 'teachers')]
+    private $studentClass;
 
     public function getId(): ?int
     {
@@ -79,12 +73,12 @@ class Teacher
         return $this;
     }
 
-    public function getAge(): ?int
+    public function getAge(): ?string
     {
         return $this->age;
     }
 
-    public function setAge(int $age): self
+    public function setAge(string $age): self
     {
         $this->age = $age;
 
@@ -103,26 +97,14 @@ class Teacher
         return $this;
     }
 
-    /**
-     * @return Collection|StudentClass[]
-     */
-    public function getStudentclasses(): Collection
+    public function getStudentClass(): ?StudentClass
     {
-        return $this->studentclasses;
+        return $this->studentClass;
     }
 
-    public function addStudentclass(StudentClass $studentclass): self
+    public function setStudentClass(?StudentClass $studentClass): self
     {
-        if (!$this->studentclasses->contains($studentclass)) {
-            $this->studentclasses[] = $studentclass;
-        }
-
-        return $this;
-    }
-
-    public function removeStudentclass(StudentClass $studentclass): self
-    {
-        $this->studentclasses->removeElement($studentclass);
+        $this->studentClass = $studentClass;
 
         return $this;
     }

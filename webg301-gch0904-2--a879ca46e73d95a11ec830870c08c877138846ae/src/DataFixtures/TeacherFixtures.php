@@ -12,12 +12,12 @@ class TeacherFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
-
         for ($i=1; $i<=10; $i++){
             $teacher = new Teacher;
+            $teacher->setAvatar("images.png");
             $teacher->setCode("T0$i");
             $teacher->setName("Teacher $i");
-            $teacher->setAge("35");
+            $teacher->setAge("30");
             $teacher->setGender("Male");
             $manager->persist($teacher);
 

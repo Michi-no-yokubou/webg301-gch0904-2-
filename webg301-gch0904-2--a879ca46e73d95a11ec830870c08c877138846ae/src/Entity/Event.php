@@ -16,7 +16,7 @@ class Event
     #[ORM\Column(type: 'string', length: 255)]
     private $description;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string', length: 255)]
     private $duration;
 
     #[ORM\ManyToOne(targetEntity: StudentClass::class, inversedBy: 'events')]
@@ -39,12 +39,12 @@ class Event
         return $this;
     }
 
-    public function getDuration(): ?int
+    public function getDuration(): ?string
     {
         return $this->duration;
     }
 
-    public function setDuration(int $duration): self
+    public function setDuration(string $duration): self
     {
         $this->duration = $duration;
 

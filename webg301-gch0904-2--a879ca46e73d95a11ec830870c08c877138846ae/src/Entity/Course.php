@@ -18,18 +18,15 @@ class Course
     #[ORM\Column(type: 'string', length: 255)]
     private $description;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $class;
-
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string', length: 255)]
     private $duration;
 
-    #[ORM\ManyToMany(targetEntity: StudentClass::class, inversedBy: 'courses')]
-    private $studentclasses;
+    #[ORM\ManyToMany(targetEntity: StudentClass::class, mappedBy: 'courses')]
+    private $studentClasses;
 
     public function __construct()
     {
-        $this->studentclasses = new ArrayCollection();
+        $this->studentClasses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -42,31 +39,19 @@ class Course
         return $this->description;
     }
 
-    public function setDescription(?string $description): self
+    public function setDescription(string $description): self
     {
         $this->description = $description;
 
         return $this;
     }
 
-    public function getClass(): ?string
-    {
-        return $this->class;
-    }
-
-    public function setClass(?string $class): self
-    {
-        $this->class = $class;
-
-        return $this;
-    }
-
-    public function getDuration(): ?int
+    public function getDuration(): ?string
     {
         return $this->duration;
     }
 
-    public function setDuration(int $duration): self
+    public function setDuration(string $duration): self
     {
         $this->duration = $duration;
 
@@ -76,23 +61,26 @@ class Course
     /**
      * @return Collection|StudentClass[]
      */
-    public function getStudentclasses(): Collection
+    public function getStudentClasses(): Collection
     {
-        return $this->studentclasses;
+        return $this->studentClasses;
     }
 
-    public function addStudentclass(StudentClass $studentclass): self
+    public function addStudentClass(StudentClass $studentClass): self
     {
-        if (!$this->studentclasses->contains($studentclass)) {
-            $this->studentclasses[] = $studentclass;
+        if (!$this->studentClasses->contains($studentClass)) {
+            $this->studentClasses[] = $studentClass;
+            $studentClass->addCourse($this);
         }
 
         return $this;
     }
 
-    public function removeStudentclass(StudentClass $studentclass): self
+    public function removeStudentClass(StudentClass $studentClass): self
     {
-        $this->studentclasses->removeElement($studentclass);
+        if ($this->studentClasses->removeElement($studentClass)) {
+            $studentClass->removeCourse($this);
+        }
 
         return $this;
     }

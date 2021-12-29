@@ -16,7 +16,7 @@ class TuitionFee
     #[ORM\Column(type: 'float')]
     private $amount;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string', length: 255)]
     private $duration;
 
     #[ORM\OneToOne(targetEntity: Student::class, cascade: ['persist', 'remove'])]
@@ -39,12 +39,12 @@ class TuitionFee
         return $this;
     }
 
-    public function getDuration(): ?int
+    public function getDuration(): ?string
     {
         return $this->duration;
     }
 
-    public function setDuration(int $duration): self
+    public function setDuration(string $duration): self
     {
         $this->duration = $duration;
 

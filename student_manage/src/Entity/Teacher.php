@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TeacherRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\PseudoTypes\False_;
 
 #[ORM\Entity(repositoryClass: TeacherRepository::class)]
 class Teacher
@@ -13,7 +14,7 @@ class Teacher
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255 , nullable:true)]
     private $avatar;
 
     #[ORM\Column(type: 'string', length: 10)]

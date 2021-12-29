@@ -15,25 +15,25 @@ class StudentClass
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $course;
+    #[ORM\ManyToMany(targetEntity: Course::class, inversedBy: 'studentClasses')]
+    private $courses;
 
     #[ORM\OneToMany(mappedBy: 'studentClass', targetEntity: Student::class)]
     private $students;
 
-    #[ORM\ManyToMany(targetEntity: Course::class, mappedBy: 'studentclasses')]
-    private $courses;
-
-    #[ORM\ManyToMany(targetEntity: Teacher::class, mappedBy: 'studentclasses')]
+    #[ORM\OneToMany(mappedBy: 'studentClass', targetEntity: Teacher::class)]
     private $teachers;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $course;
 
     #[ORM\OneToMany(mappedBy: 'studentclasses', targetEntity: Event::class)]
     private $events;
 
     public function __construct()
     {
-        $this->students = new ArrayCollection();
         $this->courses = new ArrayCollection();
+        $this->students = new ArrayCollection();
         $this->teachers = new ArrayCollection();
         $this->events = new ArrayCollection();
     }
@@ -43,14 +43,26 @@ class StudentClass
         return $this->id;
     }
 
-    public function getCourse(): ?string
+    /**
+     * @return Collection|Course[]
+     */
+    public function getCourses(): Collection
     {
-        return $this->course;
+        return $this->courses;
     }
 
-    public function setCourse(string $course): self
+    public function addCourse(Course $course): self
     {
-        $this->course = $course;
+        if (!$this->courses->contains($course)) {
+            $this->courses[] = $course;
+        }
+
+        return $this;
+    }
+
+    public function removeCourse(Course $course): self
+    {
+        $this->courses->removeElement($course);
 
         return $this;
     }
@@ -86,33 +98,6 @@ class StudentClass
     }
 
     /**
-     * @return Collection|Course[]
-     */
-    public function getCourses(): Collection
-    {
-        return $this->courses;
-    }
-
-    public function addCourse(Course $course): self
-    {
-        if (!$this->courses->contains($course)) {
-            $this->courses[] = $course;
-            $course->addStudentclass($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCourse(Course $course): self
-    {
-        if ($this->courses->removeElement($course)) {
-            $course->removeStudentclass($this);
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Teacher[]
      */
     public function getTeachers(): Collection
@@ -124,7 +109,7 @@ class StudentClass
     {
         if (!$this->teachers->contains($teacher)) {
             $this->teachers[] = $teacher;
-            $teacher->addStudentclass($this);
+            $teacher->setStudentClass($this);
         }
 
         return $this;
@@ -133,8 +118,23 @@ class StudentClass
     public function removeTeacher(Teacher $teacher): self
     {
         if ($this->teachers->removeElement($teacher)) {
-            $teacher->removeStudentclass($this);
+            // set the owning side to null (unless already changed)
+            if ($teacher->getStudentClass() === $this) {
+                $teacher->setStudentClass(null);
+            }
         }
+
+        return $this;
+    }
+
+    public function getCourse(): ?string
+    {
+        return $this->course;
+    }
+
+    public function setCourse(string $course): self
+    {
+        $this->course = $course;
 
         return $this;
     }

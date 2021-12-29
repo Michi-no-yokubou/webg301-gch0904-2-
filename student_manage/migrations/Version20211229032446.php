@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20211227172507 extends AbstractMigration
+final class Version20211229032446 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -27,6 +27,7 @@ final class Version20211227172507 extends AbstractMigration
         $this->addSql('CREATE TABLE student_class_course (student_class_id INT NOT NULL, course_id INT NOT NULL, INDEX IDX_401C9CB6598B478B (student_class_id), INDEX IDX_401C9CB6591CC992 (course_id), PRIMARY KEY(student_class_id, course_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE teacher (id INT AUTO_INCREMENT NOT NULL, student_class_id INT DEFAULT NULL, avatar VARCHAR(255) NOT NULL, code VARCHAR(10) NOT NULL, name VARCHAR(30) NOT NULL, age VARCHAR(255) NOT NULL, gender VARCHAR(255) NOT NULL, INDEX IDX_B0F6A6D5598B478B (student_class_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE tuition_fee (id INT AUTO_INCREMENT NOT NULL, students_id INT DEFAULT NULL, amount DOUBLE PRECISION NOT NULL, duration VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_D62EA9121AD8D010 (students_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(180) NOT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json)\', password VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_8D93D649F85E0677 (username), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE event ADD CONSTRAINT FK_3BAE0AA7B4D03BB9 FOREIGN KEY (studentclasses_id) REFERENCES student_class (id)');
         $this->addSql('ALTER TABLE student ADD CONSTRAINT FK_B723AF33598B478B FOREIGN KEY (student_class_id) REFERENCES student_class (id)');
         $this->addSql('ALTER TABLE student_class_course ADD CONSTRAINT FK_401C9CB6598B478B FOREIGN KEY (student_class_id) REFERENCES student_class (id) ON DELETE CASCADE');
@@ -51,5 +52,6 @@ final class Version20211227172507 extends AbstractMigration
         $this->addSql('DROP TABLE student_class_course');
         $this->addSql('DROP TABLE teacher');
         $this->addSql('DROP TABLE tuition_fee');
+        $this->addSql('DROP TABLE user');
     }
 }

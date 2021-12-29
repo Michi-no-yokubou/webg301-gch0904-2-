@@ -29,7 +29,7 @@ class StudentController extends AbstractController
 
     #[Route('/student/detail/{id}', name : 'student_detail')]
     public function studentDetail ($id) {
-        $students = $this->getDoctrine()->getRepository(student::class)->find($id);
+        $students = $this->em->getRepository(student::class)->find($id);
         if ($students == null) {
             $this->addFlash("Error", "student not existed");
             return $this->redirectToRoute("student");
@@ -42,12 +42,12 @@ class StudentController extends AbstractController
 
     #[Route('/student/edit/{id}', name : 'student_edit')]
     public function studentEdit (Request $request, $id) {
-        $student = $this->getDoctrine()->getRepository(student::class)->find($id);
+        $student = $this->em->getRepository(student::class)->find($id);
         $form = $this->createForm(studentType::class,$student);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $manager = $this->getDoctrine()->getManager();
+            $manager = $this->em->getManager();
             $manager->persist($student);
             $manager->flush();
 
@@ -63,11 +63,11 @@ class StudentController extends AbstractController
 
     #[Route('/student/delete/{id}', name : 'student_delete')]
     public function studentDelete ($id) {
-        $student = $this->getDoctrine()->getRepository(student::class)->find($id);
+        $student = $this->em->getRepository(student::class)->find($id);
         if ($student == null) {
             $this->addFlash("Error", "student delete failed");
         } else {
-            $manager = $this->getDoctrine()->getManager();
+            $manager = $this->em->getManager();
             $manager->remove($student);
             $manager->flush();
             $this->addFlash("Zuccess", "student delete succeed");

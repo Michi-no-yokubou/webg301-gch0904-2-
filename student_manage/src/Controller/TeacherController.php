@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use App\Form\TeacherType;
 use App\Entity\Teacher;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +17,7 @@ class TeacherController extends AbstractController
     }
 
     #[Route('/teacher', name: 'teacher')]
-    public function index(): Response
+    public function teacherIndex(): Response
     {
         $teachers = $this->em->getRepository(Teacher::class)->findAll();
         return $this->render('teacher/index.html.twig', 
@@ -28,7 +28,7 @@ class TeacherController extends AbstractController
 
     #[Route('/teacher/detail/{id}', name : 'teacher_detail')]
     public function teacherDetail ($id) {
-        $teachers = $this->getDoctrine()->getRepository(Teacher::class)->find($id);
+        $teachers = $this->em->getRepository(Teacher::class)->find($id);
         if ($teachers == null) {
             $this->addFlash("Error", "teacher not existed");
             return $this->redirectToRoute("teacher");
@@ -41,12 +41,12 @@ class TeacherController extends AbstractController
 
     #[Route('/teacher/edit/{id}', name : 'teacher_edit')]
     public function teacherEdit (Request $request, $id) {
-        $teacher = $this->getDoctrine()->getRepository(Teacher::class)->find($id);
+        $teacher = $this->em->getRepository(Teacher::class)->find($id);
         $form = $this->createForm(teacherType::class,$teacher);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $manager = $this->getDoctrine()->getManager();
+            $manager = $this->em->getManager();
             $manager->persist($teacher);
             $manager->flush();
 
@@ -62,11 +62,11 @@ class TeacherController extends AbstractController
 
     #[Route('/teacher/delete/{id}', name : 'teacher_delete')]
     public function teacherDelete ($id) {
-        $teacher = $this->getDoctrine()->getRepository(teacher::class)->find($id);
+        $teacher = $this->em->getRepository(teacher::class)->find($id);
         if ($teacher == null) {
             $this->addFlash("Error", "teacher delete failed");
         } else {
-            $manager = $this->getDoctrine()->getManager();
+            $manager = $this->em->getManager();
             $manager->remove($teacher);
             $manager->flush();
             $this->addFlash("Zuccess", "teacher delete succeed");

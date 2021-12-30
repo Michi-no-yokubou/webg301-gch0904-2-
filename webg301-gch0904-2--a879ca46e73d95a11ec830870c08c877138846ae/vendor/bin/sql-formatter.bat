@@ -1,4 +1,0 @@
-@ECHO OFF
-setlocal DISABLEDELAYEDEXPANSION
-SET BIN_TARGET=%~dp0/sql-formatter
-php "%BIN_TARGET%" %*

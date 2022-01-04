@@ -2,7 +2,6 @@
 
 namespace App\Form;
 
-//use App\Entity\Book;
 use App\Entity\Teacher;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

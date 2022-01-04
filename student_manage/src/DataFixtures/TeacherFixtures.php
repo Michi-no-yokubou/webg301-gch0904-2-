@@ -14,7 +14,7 @@ class TeacherFixtures extends Fixture
         // $manager->persist($product);
         for ($i=1; $i<=10; $i++){
             $teacher = new Teacher;
-            $teacher->setAvatar("images.png");
+            $teacher->setAvatar("avatar.png");
             $teacher->setCode("T0$i");
             $teacher->setName("Teacher $i");
             $teacher->setAge("30");

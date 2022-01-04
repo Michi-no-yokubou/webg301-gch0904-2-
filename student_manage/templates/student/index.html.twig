@@ -53,12 +53,13 @@
                     <p><a class="nav-item nav-link" href="{{ path('course') }}">Course</a></p>
                   </div>
                   <div class="col-sm-8 text-left"> 
-                    <h1>Student</h1>
+                    <h1>Students</h1>
                     <p>This system exists to simplify information tracking for both teachers and administrative staff.</p>
                     <hr>
                     <table class="table table-responsive-md mt-3">
                         <tr>
                             <th>Student ID</th>
+                            <th>Student Avatar</th>
                             <th>Student Name</th>
                             <th>Edit</th>
                             <th>Delete</th>
@@ -67,6 +68,11 @@
             {% for student in students %}
                 <tr>
                     <td>{{ student.id }}</td>
+                        <td>
+                            <a href="{{ path('student_detail', {'id': student.id }) }}">
+                                <img src="{{ asset('avatars/'~student.avatar) }}" width="100" height="120">   
+                            </a>          
+                        </td>                   
                     <td>
                         <a class="text-decoration-none" href= "{{ path('student_detail', {'id' : student.id }) }}">
                             {{ student.name }}

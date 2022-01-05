@@ -30,6 +30,9 @@ class StudentClass
     #[ORM\OneToMany(mappedBy: 'studentclasses', targetEntity: Event::class)]
     private $events;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $name;
+
     public function __construct()
     {
         $this->courses = new ArrayCollection();
@@ -165,6 +168,18 @@ class StudentClass
                 $event->setStudentclasses(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

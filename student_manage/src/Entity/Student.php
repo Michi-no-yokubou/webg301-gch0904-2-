@@ -36,6 +36,22 @@ class Student
         return $this->id;
     }
 
+<<<<<<< HEAD
+=======
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(string $avatar)
+    {
+        if ($avatar != null) {
+            $this->avatar = $avatar;
+        }
+        return $this;
+    }
+
+>>>>>>> 70665979bfa6951be9fc6eb0404c895f81a74a23
     public function getCode(): ?string
     {
         return $this->code;

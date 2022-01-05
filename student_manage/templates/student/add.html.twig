@@ -5,6 +5,14 @@
    <h2 class="text-center">Add New Student</h2>
    <div class="col md-6"></div>
       {{ form_start (studentForm) }}
+           <div class="form-group">
+            {{ form_label (bookForm.avatar)}}
+            {{ form_widget (bookForm.avatar ,
+               {
+                  'attr' : {'class' : 'form-control'}
+               })
+            }}
+         </div>         
          <div class="form-group">
             {{ form_label (studentForm.code)}}
             {{ form_widget (studentForm.code ,

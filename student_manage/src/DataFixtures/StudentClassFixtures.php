@@ -14,6 +14,7 @@ class StudentClassFixtures extends Fixture
         // $manager->persist($product);
         $studentclass = new StudentClass;
         $studentclass->setCourse(" khoa hoc cho F2G");
+        $studentclass->setName(" GCH0904");
         $manager->persist($studentclass);
         $manager->flush();
     }

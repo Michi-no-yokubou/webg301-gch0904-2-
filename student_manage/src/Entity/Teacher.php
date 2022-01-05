@@ -109,16 +109,4 @@ class Teacher
         return $this;
     }
         
-    public function getPicture()
-    {
-        return $this->picture;
-    }
-
-    public function setPicture($picture)
-    {
-        if($picture != null){
-            $this->picture = $picture; 
-        }
-        return $this;
-    }
 }

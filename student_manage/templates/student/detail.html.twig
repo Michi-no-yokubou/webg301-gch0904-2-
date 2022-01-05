@@ -22,8 +22,8 @@
                 <tr>
                     <td> {{ students.code }} </td>
                     <td>
-                        <a href="{{ path('student_detail', {'id': student.id}) }}">
-                            <img src="{{ asset('student/'~student.picture) }}" style="width:30%">
+                        <a href="{{ path('student_detail', {'id': students.id}) }}">
+                            <img src="{{ asset('student/'~students.picture) }}" style="width:19%">
                       </a>
                     </td>
                     <td> {{ students.name }} </td>

@@ -29,12 +29,6 @@ class TeacherType extends AbstractType
                     'minlength' => 3
                 ]
             ])
-            ->add('picture', FileType::class,
-            [
-                'label' => 'Picture',
-                'data_class' => null,
-                'required' => is_null($builder->getData()->getPicture())
-            ])
             ->add('age', NumberType::class,
             [
                 'label' => 'Teacher age',

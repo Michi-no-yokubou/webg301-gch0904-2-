@@ -24,6 +24,9 @@ class Course
     #[ORM\ManyToMany(targetEntity: StudentClass::class, mappedBy: 'courses')]
     private $studentClasses;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $name;
+
     public function __construct()
     {
         $this->studentClasses = new ArrayCollection();
@@ -81,6 +84,18 @@ class Course
         if ($this->studentClasses->removeElement($studentClass)) {
             $studentClass->removeCourse($this);
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

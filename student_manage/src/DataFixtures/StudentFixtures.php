@@ -12,16 +12,30 @@ class StudentFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
-        for ($i=1; $i<=10; $i++){
+        
             $student = new Student;
-            $student->setAvatar("images.png");
-            $student->setCode("GCH000$i");
-            $student->setName("Student $i");
+            $student->setPicture("ubersmil.png");
+            $student->setCode("GCH0001");
+            $student->setName("Student1");
             $student->setAge("12");
             $student->setGender("Male");
             $manager->persist($student);
 
-        }
+            $student = new Student;
+            $student->setPicture("smiluber.png");
+            $student->setCode("GCH0002");
+            $student->setName("Student2");
+            $student->setAge("12");
+            $student->setGender("NotMale");
+            $manager->persist($student);
+
+            $student = new Student;
+            $student->setPicture("longsmil.png");
+            $student->setCode("GCH0003");
+            $student->setName("Student3");
+            $student->setAge("12");
+            $student->setGender("Male");
+            $manager->persist($student);
 
         $manager->flush();
     }

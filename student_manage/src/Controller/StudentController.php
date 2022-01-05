@@ -4,10 +4,12 @@ namespace App\Controller;
 use App\Form\StudentType;
 use App\Entity\Student;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
+use function PHPUnit\Framework\throwException;
 class StudentController extends AbstractController
 {
 
@@ -24,6 +26,19 @@ class StudentController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $image = $student->getPicture();
+            $imgName = uniqid();
+            $imgExtension = $image->guessExtension();
+            $imageName = $imgName . "." . $imgExtension;
+            try{
+                $image->move(
+                    $this->getParameter('student_picture'), $imageName
+                );
+            }catch(FileException $e){
+                throwException($e);
+            }
+            $student->setPicture($imageName);
             $manager = $this->em->getManager();
             $manager->persist($student);
             $manager->flush();
@@ -60,12 +75,28 @@ class StudentController extends AbstractController
     }
 
     #[Route('/student/edit/{id}', name : 'student_edit')]
-    public function studentEdit (Request $request, $id) {
-        $student = $this->em->getRepository(Student::class)->find($id);
-        $form = $this->createForm(studentType::class,$student);
+    public function studentEdit(Request $request, $id){
+        $student = $this->em->getRepository(student::class)->find($id);
+        $form = $this->createForm(StudentType::class, $student);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid()) 
+        {
+            $file = $form['picture']->getData();
+            if($file != null){
+                $image = $student->getPicture();
+                $imgName = uniqid();
+                $imgExtension = $image->guessExtension();
+                $imageName = $imgName . "." . $imgExtension;
+                try{
+                    $image->move(
+                    $this->getParameter('student_picture'), $imageName);
+                }catch(FileException $e){
+                    throwException($e);
+                }
+                $student->setPicture($imageName);
+            }
+
             $manager = $this->em->getManager();
             $manager->persist($student);
             $manager->flush();
@@ -73,7 +104,6 @@ class StudentController extends AbstractController
             $this->addFlash("Success", "Edit student succeed");
             return $this->redirectToRoute("student");
         }
-
         return $this->renderForm("student/edit.html.twig",
         [
             'studentForm' => $form
@@ -93,4 +123,5 @@ class StudentController extends AbstractController
         }
         return $this->redirectToRoute('student');
     }
+
 }

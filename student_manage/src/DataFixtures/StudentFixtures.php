@@ -14,15 +14,9 @@ class StudentFixtures extends Fixture
         // $manager->persist($product);
         
             $student = new Student;
-<<<<<<< HEAD
             $student->setPicture("ubersmil.png");
             $student->setCode("GCH0001");
             $student->setName("Student1");
-=======
-            $student->setAvatar("avatars.png");
-            $student->setCode("GCH000$i");
-            $student->setName("Student $i");
->>>>>>> 70665979bfa6951be9fc6eb0404c895f81a74a23
             $student->setAge("12");
             $student->setGender("Male");
             $manager->persist($student);

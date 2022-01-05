@@ -8,7 +8,7 @@
     <table class="table table-responsive-md mt-3">
         <thead>
             <tr>
-                <th>Student Avatar</th>
+                
                 <th>Student Code</th>
                 <th>Image</th>
                 <th>Student Name</th>
@@ -20,9 +20,6 @@
         </thead>
         <tbody>
                 <tr>
-                    <td>
-                        <img src="{{ asset('avatars/'~student.avatar) }}" width="100" height="120">          
-                    </td>                 
                     <td> {{ students.code }} </td>
                     <td>
                         <a href="{{ path('student_detail', {'id': student.id}) }}">

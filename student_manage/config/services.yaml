@@ -4,11 +4,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-<<<<<<< HEAD
     'student_picture': '%kernel.project_dir%/public/student'
-=======
-    'student_avatar' : '%kernel.project_dir%/public/avatars'
->>>>>>> 70665979bfa6951be9fc6eb0404c895f81a74a23
 services:
     # default configuration for services in *this* file
     _defaults:

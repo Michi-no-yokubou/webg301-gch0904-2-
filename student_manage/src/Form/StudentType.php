@@ -18,12 +18,7 @@ class StudentType extends AbstractType
     {
         $builder
         
-        ->add('avatar', FileType::class, 
-        [
-            'label' => 'Student Avatar',
-            'data_class' => null,
-            'required' => is_null($builder->getData()->getAvatar())
-        ])        
+        
             ->add('code', TextType::class,
             [
                 'label' => 'Student code',

@@ -15,14 +15,14 @@ class UserFixtures extends Fixture
         //tạo tài khoản với role USER
         $user = new User();
         $user->setUsername("user");
-        $user->setPassword("123");
+        $user->setPassword("123456");
         $user->setRoles(['ROLE_USER']);
         $manager->persist($user);
 
         //tạo tài khoản với role ADMIN
         $user = new User();
         $user->setUsername("admin");
-        $user->setPassword("123");
+        $user->setPassword("123456");
         $user->setRoles(['ROLE_ADMIN']);
         $manager->persist($user);
 

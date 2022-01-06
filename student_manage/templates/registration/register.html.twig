@@ -5,26 +5,62 @@
 {% block nav %}{% endblock %}
 
 {% block body %}
+<thead>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>eTutor </title>
+	<!-- loader-->
+	<link href="{{ asset('css/pace.min.css') }}" rel="stylesheet" />
+	<script src="{{ asset('js/pace.min.js') }}"></script>
+	<!--favicon-->
+	<link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+	<!-- Bootstrap core CSS-->
+	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
+	<!-- animate CSS-->
+	<link href="{{ asset('css/animate.css') }}" rel="stylesheet" type="text/css" />
+	<!-- Icons CSS-->
+	<link href="{{ asset('css/icons.css') }}" rel="stylesheet" type="text/css" />
+	<!-- Custom Style-->
+	<link href="{{ asset('css/app-style.css') }}" rel="stylesheet" />
+</thead>
+<body class="bg-theme bg-theme2">
 <div class="container text-center col-5 mt-3">
-    <h1 class="text-primary">Account Registration</h1>
-
+    <div class="text-center">
+        <img src="{{ asset('images/logo-icon.png') }}" alt="logo icon">
+    </div>
+    <div class="card-title text-uppercase text-center py-3">Account Registration</div>
     {{ form_start(registrationForm) }}
-        <div class="form-control">
-            <label>Username</label>
-            {{ form_widget(registrationForm.username) }}
+    
+        <div class="form-group">
+            <div class="position-relative has-icon-right">
+                <label>Username</label>
+                {{ form_widget(registrationForm.username) }}
+                <div class="form-control-position">
+                    <i class="icon-user"></i>
+                </div>
+            </div>
         </div>
-        <div class="form-control">
-            <label>Password</label>
-            {{ form_widget(registrationForm.plainPassword) }}
+        <div class="form-group">
+            <div class="position-relative has-icon-right">
+                <label>Password</label>
+                {{ form_widget(registrationForm.plainPassword) }}
+                <div class="form-control-position">
+                    <i class="icon-user"></i>
+                </div>
+            </div>
         </div>
         <div class="form-check">
             {{ form_widget(registrationForm.agreeTerms) }}
-            <lable>Agree terms</label>
+            <label>Agree terms</label>
         </div>
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" class="btn btn-light btn-block">Register</button>
     {{ form_end(registrationForm) }}
     <h5>
-        <a class="nav-link mt-4" href="{{ path('app_login') }}">Log in</a>
+        <a class="btn btn-light btn-block" href="{{ path('app_login') }}">Log in</a>
     </h5>
 </div>
+</body>
 {% endblock %}

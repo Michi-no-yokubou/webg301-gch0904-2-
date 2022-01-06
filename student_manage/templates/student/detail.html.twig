@@ -3,9 +3,11 @@
 {% block body %}
 
 <div class="container-md col-md-8 mt-3 mb-3 text-center">
+    {% if is_granted("ROLE_ADMIN") %}
     <a href = "{{ path('student_add') }}">
         <img src = "{{ asset('images/add.png') }}" width="80" heigh="60" >
     </a>
+    {% endif %}
     <table class="table table-responsive-md mt-3">
         <thead>
             <meta charset="utf-8" />

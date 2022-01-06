@@ -4,10 +4,11 @@
 
 {% block body %}
 <div class="container-md col-md-8 mt-3 mb-3 text-center">
+  {% if is_granted("ROLE_ADMIN") %}
   <a href = "{{ path('student_add') }}">
-    <img src = "{{ asset('images/add.png') }}" width="90" heigh="30" >
+    <img src = "{{ asset('images/add.png') }}" width="90" heigh="60" >
   </a>
-    
+  {% endif %}
   <thead>
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -273,7 +274,6 @@
           document.getElementById("myForm").style.display = "none";
         }
       </script>
-  </tbody>
     
 
 </div>

@@ -69,6 +69,7 @@
                             {{ course.name }}
                         </a>
                     </td>
+                    {% if is_granted("ROLE_ADMIN") %}
                     <td>
                         <a href = "{{ path('course_edit', {'id' : course.id }) }}">
                             <img src = "{{ asset('images/edit.png') }}" width="25" height="20" >
@@ -80,6 +81,7 @@
                             <img src = "{{ asset('images/delete.png') }}" width="25" height="20" >
                         </a>
                     </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </table>

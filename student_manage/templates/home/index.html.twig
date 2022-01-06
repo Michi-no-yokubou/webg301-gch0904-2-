@@ -35,28 +35,105 @@
     <!-- Custom Style-->
     <link href="{{ asset('css/app-style.css') }}" rel="stylesheet" />
 </thead>
+
+
+
+
+
+
+
+
 <tbody class="bg-theme bg-theme2">
-    <div class="jumbotron">
+      <div class="jumbotron">
         <div class="container text-center">
-          <h1>Student Management</h1>
+          <h1 style="color:black;">Student Management</h1>      
         </div>
       </div>
       
-
-
-
-
-
-
-
-
-
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="container-md text-center mt-4">
+                <img src="{{ asset('images/library1.png') }}">
+            </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">Products</a></li>
+              <li><a href="#">Deals</a></li>
+              <li><a href="#">Stores</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
       
+      <div class="container">    
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="panel panel-primary">
+              <div class="panel-heading">Always be mad</div>
+              <div class="panel-body"><img src="{{ asset('images/joke1.png') }}" class="img-responsive" style="width:100%" alt="Image"></div>
+              <div class="panel-footer">This boost your STR and AMPR.</div>
+            </div>
+          </div>
+          <div class="col-sm-4"> 
+            <div class="panel panel-danger">
+              <div class="panel-heading">Throw your kid</div>
+              <div class="panel-body"><img src="{{ asset('images/joke2.png') }}" class="img-responsive" style="width:100%" alt="Image"></div>
+              <div class="panel-footer">Throw your child in very young age make them smarter each throw.</div>
+            </div>
+          </div>
+          <div class="col-sm-4"> 
+            <div class="panel panel-success">
+              <div class="panel-heading">Beats your child</div>
+              <div class="panel-body"><img src="{{ asset('images/joke3.png') }}" class="img-responsive" style="width:100%" alt="Image"></div>
+              <div class="panel-footer">This is the most important part in teaching your child. You should practice this activity everyday if can.</div>
+            </div>
+          </div>
+        </div>
+      </div><br>
+      <div class="container text-center">
+      <h3>Happy kids from parents who use theses often.</h3>
+        </div>
+      <div class="container">    
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="panel panel-primary">
+              <div class="panel-heading">Physical abused</div>
+              <div class="panel-body"><img src="{{ asset('images/joke4.png') }}" class="img-responsive" style="width:100%" alt="Image"></div>
+              <div class="panel-footer"></div>
+            </div>
+          </div>
+          <div class="col-sm-4"> 
+            <div class="panel panel-primary">
+              <div class="panel-heading">Psychological abuse</div>
+              <div class="panel-body"><img src="{{ asset('images/joke5.png') }}" class="img-responsive" style="width:100%" alt="Image"></div>
+              <div class="panel-footer"></div>
+            </div>
+          </div>
+          <div class="col-sm-4"> 
+            <div class="panel panel-primary">
+              <div class="panel-heading">Suicidal thoughts</div>
+              <div class="panel-body"><img src="{{ asset('images/joke6.png') }}" class="img-responsive" style="width:100%" alt="Image"></div>
+              <div class="panel-footer"></div>
+            </div>
+          </div>
+        </div>
+      </div><br><br>
 
 
 
-      
-      
+
+
+
+
+
+
+
         <!-- Bootstrap core JavaScript-->
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/popper.min.js') }}"></script>
@@ -236,17 +313,6 @@
             document.getElementById("myForm").style.display = "none";
           }
         </script>
-                  <footer class="footer">
-                    <div class="container-fluid text-center">
-                      <div class="text-center">
-                        You are <?php echo $_SESSION['username'];  ?> have been loggin success !
-                      </div>
-                    </div>
-                    <p>Student Management Copyright</p>
-                    <p>Team's Member<p>
-                    <p>Nguyen Duc Anh - Nguyen Dang Tu - Nguyen Duy Long<p>
-                    <p>Mr zucc</p>
-                  </footer>
 </tbody>
 
 {% endblock %}

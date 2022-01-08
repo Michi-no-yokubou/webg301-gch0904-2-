@@ -4,10 +4,12 @@ namespace App\Controller;
 use App\Form\TeacherType;
 use App\Entity\Teacher;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
+use function PHPUnit\Framework\throwException;
 class TeacherController extends AbstractController
 {
     private $em;
@@ -22,6 +24,18 @@ class TeacherController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $teacher->getPicture();
+            $imgName = uniqid();
+            $imgExtension = $image->guessExtension();
+            $imageName = $imgName . "." . $imgExtension;
+            try{
+                $image->move(
+                    $this->getParameter('teacher_picture'), $imageName
+                );
+            }catch(FileException $e){
+                throwException($e);
+            }
+            $teacher->setPicture($imageName);
             $manager = $this->em->getManager();
             $manager->persist($teacher);
             $manager->flush();
@@ -65,6 +79,20 @@ class TeacherController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form['picture']->getData();
+            if($file != null){
+                $image = $teacher->getPicture();
+                $imgName = uniqid();
+                $imgExtension = $image->guessExtension();
+                $imageName = $imgName . "." . $imgExtension;
+                try{
+                    $image->move(
+                    $this->getParameter('teacher_picture'), $imageName);
+                }catch(FileException $e){
+                    throwException($e);
+                }
+                $teacher->setPicture($imageName);
+            }
             $manager = $this->em->getManager();
             $manager->persist($teacher);
             $manager->flush();

@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class TeacherType extends AbstractType
 {
@@ -28,6 +29,12 @@ class TeacherType extends AbstractType
                 [
                     'minlength' => 3
                 ]
+            ])
+            ->add('picture', FileType::class,
+            [
+                'label' => 'Teacher picture',
+                'data_class' => null,
+                'required' => is_null($builder->getData()->getPicture())
             ])
             ->add('age', NumberType::class,
             [

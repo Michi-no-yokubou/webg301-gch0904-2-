@@ -17,6 +17,9 @@ class Teacher
     #[ORM\Column(type: 'string', length: 255 , nullable:true)]
     private $avatar;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $picture;
+
     #[ORM\Column(type: 'string', length: 10)]
     private $code;
 
@@ -106,6 +109,18 @@ class Teacher
     {
         $this->studentClass = $studentClass;
 
+        return $this;
+    }
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    public function setPicture($picture)
+    {
+        if($picture != null){
+            $this->picture = $picture; 
+        }
         return $this;
     }
         

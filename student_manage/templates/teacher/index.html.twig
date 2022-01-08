@@ -57,6 +57,7 @@
                       <thead>
                           <tr>
                               <th>Teacher ID</th>
+                              <th>Image</th>
                               <th>Teacher Name</th>
                               <th>Edit</th>
                               <th>Delete</th>
@@ -64,6 +65,11 @@
                           {% for teacher in teachers %}
                           <tr>
                               <td>{{ teacher.id }}</td>
+                              <td>
+                                  <a href="{{ path('teacher_detail', {'id': teacher.id}) }}">
+                                  <img src="{{ asset('teacher/'~teacher.picture) }}" style="width:25%">
+                                  </a>
+                              </td>
                               <td>
                                   <a class="text-decoration-none" href= "{{ path('teacher_detail', {'id' : teacher.id }) }}">
                                       {{ teacher.name }}

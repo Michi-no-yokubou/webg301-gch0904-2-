@@ -44,6 +44,7 @@
             <tr>
                 
                 <th>Teacher Code</th>
+                <th>Teacher Image</th>
                 <th>Teacher Name</th>
                 <th>Teacher Age</th>
                 <th>Teacher Gender</th>
@@ -54,6 +55,11 @@
         <tbody>
                 <tr>
                     <td> {{ teachers.code }} </td>
+                    <td>
+                        <a href="{{ path('teacher_detail', {'id': teachers.id}) }}">
+                            <img src="{{ asset('teacher/'~teachers.picture) }}" style="width:19%">
+                      </a>
+                    </td>
                     <td> {{ teachers.name }} </td>
                     <td> {{ teachers.age }} </td>
                     <td> {{ teachers.gender }} </td>
